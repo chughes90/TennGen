@@ -1,5 +1,5 @@
 # TennGen
-Data Driven Random Number Generator for generating relaistic low momentum particle phi and pT spectrum
+Data Driven Random Number Generator for generating realistic low momentum particle phi and pT spectrum for Heavy Ion Jet Background
 
 Pre-requisites:
 
