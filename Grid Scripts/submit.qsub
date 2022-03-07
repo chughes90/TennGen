@@ -1,0 +1,20 @@
+#PBS -S /bin/bash
+#PBS -N multiruns-test
+#PBS -A ACF-UTK0019
+####PBS -A ACF-UTK0011
+####PBS -o /lustre/haven/user/chughe26
+####PBS -m abe
+####PBS -M chughe26@vols.utk.edu
+####PBS -j oe
+#PBS -l nodes=1:ppn=16,walltime=08:00:00
+####PBS -l advres=condo-cnattras.13776148
+####PBS -l feature=beacon
+#PBS -l partition=general:beacon
+#PBS -l qos=overflow
+####
+####PBS -n
+################################################
+echo $1
+pbsdsh bash -l -c -v '$PBS_O_WORKDIR/job.sh '$1''
+
+
