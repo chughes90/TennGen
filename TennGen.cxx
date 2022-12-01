@@ -563,7 +563,7 @@ void TennGen::Set_Phi_Dist(Double_t pT , Double_t KF , Double_t Psi_1_event , Do
   } 
 
 //______________________________________________________________________________
-  TennGen::TennGen()//constructor
+TennGen::TennGen()//constructor
 {
 
   //CentralityBin = 0;
@@ -2056,6 +2056,262 @@ const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMat
       v4_sq_h->Reset();
     }
 
+
+  }
+
+  cout<<"\n\nthe number of entries in the bkgd array per event = "<<BkgdArray->GetEntries()<<endl;
+  //return BkgdArray;
+  return BkgdArray;
+
+
+}
+
+
+Double_t TennGen::dNdPhi_VonNeumann(Double_t phiPart, Double_t pT, 
+  Double_t Psi1 , Double_t Psi2, Double_t Psi3, Double_t Psi4, Double_t Psi5,
+  Double_t v1,Double_t v2,Double_t v3,Double_t v4,Double_t v5){
+    return (1.0+2.0*(v1*TMath::Cos(phiPart-Psi1) + v2*TMath::Cos(2.0*(phiPart-Psi2)) + v3*TMath::Cos(3.0*(phiPart-Psi3))+ v4*TMath::Cos(4.0*(phiPart-Psi4)) + v5*TMath::Cos(5.0*(phiPart-Psi5))));
+}
+
+TClonesArray *TennGen::GetBackground_TannerTest(){
+  
+  cout<<"Got Background"<<endl;
+
+  const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 30)/0.5)) , (TMath::Ceil((EtaRange * 29)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) } , { (TMath::Ceil((EtaRange * 541)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) , (TMath::Ceil((EtaRange * 81)/0.5)) , (TMath::Ceil((EtaRange * 80)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) } , { (TMath::Ceil((EtaRange * 406)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) } , { (TMath::Ceil((EtaRange * 274)/0.5)) , (TMath::Ceil((EtaRange * 273 )/0.5)), (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 273)/0.5)) } , { (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) } , { (TMath::Ceil((EtaRange * 111)/0.5)) , (TMath::Ceil((EtaRange * 110)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , 	(TMath::Ceil((EtaRange * 110)/0.5)) } , { (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) } , { (TMath::Ceil((EtaRange * 33)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) , ((TMath::Ceil(EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) } }; //setting multiplicities for particles
+
+  Double_t Psi_1_event = Psi_1->Uniform( 0 , 2.0*TMath::Pi());
+  cout << "\n\n\nPsi_1 from .cxx = "<< Psi_1_event <<" for Event " << endl;
+  cout << "Random Psi_1 Seed from .cxx = "<< (Psi_1->GetSeed()) <<" for Event " << endl;
+  Psi_1_h->Fill(Psi_1_event);
+  Psi_2_h->Fill(0.);
+  //Psi_1_event = (TMath::Pi()/2);
+  Double_t Psi_3_event = Psi_3->Uniform( 0 , 2.0*TMath::Pi());
+  cout << "Psi_3 from .cxx = "<< Psi_3_event <<" for Event " << endl;
+  cout << "Random Psi_3 Seed from .cxx = "<< (Psi_3->GetSeed()) <<" for Event " << endl;
+  Psi_3_h->Fill(Psi_3_event);
+  Psi_4_h->Fill(0.);
+  //Psi_3_event = (3*TMath::Pi()/2);
+  Double_t Psi_5_event = Psi_5->Uniform( 0 , 2.0*TMath::Pi());
+  cout << "Psi_5 from .cxx = "<< Psi_5_event <<" for Event " << endl;
+  cout << "Random Psi_5 Seed from .cxx = "<< (Psi_5->GetSeed()) <<" for Event \n\n\n" << endl;
+  Psi_5_h->Fill(Psi_5_event);
+  //Psi_5_event = (5*TMath::Pi()/2);
+  
+  // Set even psi's 
+  Double_t Psi_2_event = 0.0;
+  Double_t Psi_4_event = 0.0;
+
+
+  Int_t vN_bool_Array[5];
+  if(HarmonicsFlag == 0){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,1,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 1){
+		Int_t vN_bool_Array_temp[5] = {0,1,1,1,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 2){
+		Int_t vN_bool_Array_temp[5] = {0,0,1,1,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 3){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,1,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 4){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,0,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 5){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,0,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 6){
+		Int_t vN_bool_Array_temp[5] = {1,1,0,1,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 7){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,0,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 8){
+		Int_t vN_bool_Array_temp[5] = {1,0,1,1,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 9){
+		Int_t vN_bool_Array_temp[5] = {1,0,0,0,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 10){
+		Int_t vN_bool_Array_temp[5] = {0,1,0,0,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 11){
+		Int_t vN_bool_Array_temp[5] = {0,0,1,0,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 12){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,1,0};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 13){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,0,1};
+		for(int j=0;j<4;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+
+
+  Int_t Npart = 0;
+  for (Int_t n = 0 ; n < 7 ; n++){
+    Npart = Npart + yield_arr[CentralityBin][n];
+  }
+  //cout<<"Number of Total Particles for Centrality Bin "<<CentralityBin<<" = "<<Npart<<endl;
+  cout<<"\n\n\n\n\nSeed From the .cxx = "<<Seed<<"\n\n\n\n\n"<<endl;
+  Int_t Nparts_total=0;
+  for(Int_t n=0; n<7; n++){
+    cout << "Starting n=" <<n<<endl;
+    for( Int_t N = 0 ; N < yield_arr[CentralityBin][n] ; N++){
+
+      TMCParticle *newParticle = (TMCParticle*)BkgdArray->ConstructedAt(Nparts_total);
+      Double_t pT;
+      if(n == 0) pT = pTdist_piPlus->GetRandom();
+      else if(n==1)  pT = pTdist_piMinus->GetRandom();
+      else if(n==2)  pT = pTdist_kPlus->GetRandom();
+      else if(n==3) pT = pTdist_kMinus->GetRandom();
+      else if(n==4) pT = pTdist_p->GetRandom();
+      else if(n==5) pT = pTdist_pbar->GetRandom();
+      else if(n==6) pT = pTdist_piZero->GetRandom();
+
+      Double_t v1_eval, v2_eval, v3_eval, v4_eval, v5_eval;
+
+      
+
+      if(n==0||n==1||n==6){ // get pion vN
+        v1_eval = v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+      else if(n==2||n==3){ // get kaon vN
+        v1_eval = v1_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+      else if(n==4||n==5){ // get proton vN
+        v1_eval = v1_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+
+      if(v2_eval<0.0) v2_eval =0;
+      if(v3_eval<0.0) v3_eval =0;
+      if(v4_eval<0.0) v4_eval =0;
+      if(v5_eval<0.0) v5_eval =0;
+
+
+      // turn off harmonics which are not desired 
+      Double_t v1 = vN_bool_Array[0]*v1_eval;
+      Double_t v2 = vN_bool_Array[1]*v2_eval;
+      Double_t v3 = vN_bool_Array[2]*v3_eval;
+      Double_t v4 = vN_bool_Array[3]*v4_eval;
+      Double_t v5 = vN_bool_Array[4]*v5_eval;
+
+      Double_t Max_Phi = (1.0+2.0*(TMath::Abs(v1)+v2+v3+v4+v5));
+      Int_t CHECK = 0.0;
+     
+      while(CHECK!=1){
+         Double_t dndphi = gRandom->Uniform(0.0,Max_Phi);
+         Double_t test_phi = gRandom->Uniform(0,2.0*TMath::Pi());
+         Double_t VN_Value = dNdPhi_VonNeumann(test_phi,pT,Psi_1_event,Psi_2_event,Psi_3_event,Psi_4_event,Psi_5_event,v1,v2,v3,v4,v5);
+         if(dndphi < VN_Value) {
+          CHECK = 1;
+          phi = test_phi;
+         }
+      }
+
+      if(n==0||n==1||n==6){ // get pion vN
+        v1_pi_h->Fill( pT , v1 );
+        v2_pi_h->Fill( pT , v2 );
+        v3_pi_h->Fill( pT , v3);
+        v4_pi_h->Fill( pT , v4);
+        v5_pi_h->Fill( pT , v5);
+      }
+      else if(n==2||n==3){ // get kaon vN
+        v1_K_h->Fill( pT , v1 );
+        v2_K_h->Fill( pT , v2 );
+        v3_K_h->Fill( pT , v3);
+        v4_K_h->Fill( pT , v4);
+        v5_K_h->Fill( pT , v5);
+      }
+      else if(n==4||n==5){ // get proton vN
+        v1_P_h->Fill( pT , v1 );
+        v2_P_h->Fill( pT , v2 );
+        v3_P_h->Fill( pT , v3);
+        v4_P_h->Fill( pT , v4);
+        v5_P_h->Fill( pT , v5);
+      }
+
+      v1_sq_h->Fill( v1*v1 );
+      v2_sq_h->Fill( v2*v2 );
+      v3_sq_h->Fill( v3*v3 );
+      v4_sq_h->Fill( v4*v4 );
+      v5_sq_h->Fill( v5*v5 );
+
+      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
+      Double_t particle_mass;
+      Int_t particle_KF;   
+
+      if(n == 0) particle_mass = 0.139570;
+      else if(n==1) particle_mass = 0.139570;
+      else if(n==2) particle_mass = 0.493677;
+      else if(n==3) particle_mass = 0.493677;
+      else if(n==4) particle_mass = 0.938272;
+      else if(n==5) particle_mass = 0.938272;
+      else if(n==6) particle_mass = 0.139977;
+
+      if(n == 0) particle_KF = 211;
+      else if(n==1) particle_KF = -211;
+      else if(n==2) particle_KF = 321;
+      else if(n==3) particle_KF = -321;
+      else if(n==4) particle_KF = 2212;
+      else if(n==5) particle_KF = -2212;
+      else if(n==6) particle_KF = 111;
+
+      newParticle -> SetPx( pT * TMath::Cos( phi ) );
+      newParticle -> SetPy( pT * TMath::Sin( phi ) );
+      newParticle -> SetPz( pT*  TMath::SinH( eta ) );
+      newParticle -> SetMass(particle_mass);
+      newParticle -> SetKF(particle_KF);
+      newParticle -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + particle_mass*particle_mass  ) );
+    
+
+      Nparts_total++;
+    }
+
+  }
+
+  if(PRINTQA == kFALSE ){ //empty out the histograms if you don't want to print them out, we don't want to take up too much memory
+    
+    v1_pi_h->Reset();
+    v2_pi_h->Reset();
+    v3_pi_h->Reset();
+    v4_pi_h->Reset();
+    v5_pi_h->Reset();
+
+    v1_K_h->Reset();
+    v2_K_h->Reset();
+    v3_K_h->Reset();
+    v4_K_h->Reset();
+    v5_K_h->Reset();
+
+    v1_P_h->Reset();
+    v2_P_h->Reset();
+    v3_P_h->Reset();
+    v4_P_h->Reset();
+    v5_P_h->Reset();
+
+    v1_sq_h->Reset();
+    v2_sq_h->Reset();
+    v3_sq_h->Reset();
+    v4_sq_h->Reset();
+    v5_sq_h->Reset();
+
+    Psi_1_h->Reset();
+    Psi_2_h->Reset();
+    Psi_3_h->Reset();
+    Psi_4_h->Reset();
+    Psi_5_h->Reset();
 
   }
 

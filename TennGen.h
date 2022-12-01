@@ -118,6 +118,12 @@ private:
   static Double_t dNdphi11(Double_t *phi, Double_t *par) ;
   static Double_t dNdphi12(Double_t *phi, Double_t *par) ;
   static Double_t dNdphi13(Double_t *phi, Double_t *par) ;
+
+  
+  Double_t dNdPhi_VonNeumann(Double_t phiPart, Double_t pT,
+     Double_t Psi1 , Double_t Psi2, Double_t Psi3, Double_t Psi4, Double_t Psi5,
+    Double_t v1,Double_t v2,Double_t v3,Double_t v4,Double_t v5);
+  
   Double_t Psi_1_event;
   Double_t Psi_3_event;
   Double_t Psi_5_event;
@@ -206,6 +212,7 @@ public:
   //TClonesArray* GetBackground() = (TClonesArray*) Rando -> GetRandom(Double_t xmin = 0. Double_t xmax = 1.);
 
    TClonesArray *GetBackground();
+   TClonesArray *GetBackground_TannerTest();
    ClassDef(TennGen,1)  //Event structure
 };
 
