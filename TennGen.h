@@ -105,22 +105,9 @@ private:
   static Double_t BlastWavedNdptTimesPt(Double_t *x, Double_t *par);
   static Double_t MyIntegrandBG(Double_t *x, Double_t *par);
   static Double_t MyStaticBGdNdPtTimesPt(Double_t *x, Double_t *par);
-  static Double_t dNdphi0(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi1(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi2(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi3(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi4(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi6(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi7(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi8(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi9(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi10(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi11(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi12(Double_t *phi, Double_t *par) ;
-  static Double_t dNdphi13(Double_t *phi, Double_t *par) ;
-
+ 
   
-  Double_t dNdPhi_VonNeumann(Double_t phiPart, Double_t pT,
+  Double_t dNdPhi(Double_t phiPart, Double_t pT,
      Double_t Psi1 , Double_t Psi2, Double_t Psi3, Double_t Psi4, Double_t Psi5,
     Double_t v1,Double_t v2,Double_t v3,Double_t v4,Double_t v5);
   
@@ -140,31 +127,7 @@ private:
   Double_t v3_P_eval;
   Double_t v4_P_eval;
   Double_t v5_P_eval;  
-  void Set_Phi_Dist(Double_t pT , Double_t KF , Double_t Psi_1_event , Double_t Psi_3_event , Double_t Psi_5_event) ;
-/*
-  TH2D *v1_pi_h;
-  TH2D *v2_pi_h;
-  TH2D *v3_pi_h;
-  TH2D *v4_pi_h;
-  TH2D *v5_pi_h;
-  TH2D *v1_K_h;
-  TH2D *v2_K_h;
-  TH2D *v3_K_h;
-  TH2D *v4_K_h;
-  TH2D *v5_K_h;
-  TH2D *v1_P_h;
-  TH2D *v2_P_h;
-  TH2D *v3_P_h;
-  TH2D *v4_P_h;
-  TH2D *v5_P_h;
-  TH1D *Psi_1_h;
-  TH1D *Psi_2_h;
-  TH1D *Psi_3_h;
-  TH1D *Psi_4_h;
-  TH1D *Psi_5_h;
-  TFile *vn_QA_file;
-*/
-  TF1 *Harmonics_Phi_Dist;
+  
   TFile *vn_QA_file = new TFile("Background_Generator_QA_file.root","RECREATE");
   //TDirectory *vn_QA_plots;
   //TDirectory *Event_Plane_QA_plots;
@@ -212,7 +175,6 @@ public:
   //TClonesArray* GetBackground() = (TClonesArray*) Rando -> GetRandom(Double_t xmin = 0. Double_t xmax = 1.);
 
    TClonesArray *GetBackground();
-   TClonesArray *GetBackground_TannerTest();
    ClassDef(TennGen,1)  //Event structure
 };
 
