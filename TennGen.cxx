@@ -110,460 +110,8 @@ Double_t TennGen::fitf(Double_t *x, Double_t *par)
    return fitval;
 }
 
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
 
-Double_t TennGen::dNdphi0(Double_t *phi, Double_t *par  ) //v1 - v5
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi1(Double_t *phi, Double_t *par  ) //v2 - v5
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi2(Double_t *phi, Double_t *par  )  //v3 - v5
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi3(Double_t *phi, Double_t *par  )  //v1 - v4 (exclude v5)
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi4(Double_t *phi, Double_t *par  ) //v1 - v3 
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi6(Double_t *phi, Double_t *par  )  //v1 -v2, v4 - v5 (exclude v3)
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 0.0;
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi7(Double_t *phi, Double_t *par  )  //v1 - v3, v5 (exclude v4)
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-
-Double_t TennGen::dNdphi8(Double_t *phi, Double_t *par  )  //v1, v3 - v5 (exclude v2)
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi9(Double_t *phi, Double_t *par  )  //v1 only
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 2.0*par[0]*TMath::Cos( par[5] - phi[0] );
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 0.0;
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi10(Double_t *phi, Double_t *par  )  //v2 only
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 2.0*par[1]*TMath::Cos( 2.0*( 0.0 - phi[0] ) );
-   Double_t Third_Term = 0.0;
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi11(Double_t *phi, Double_t *par  )  //v3 only
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 2.0*par[2]*TMath::Cos( 3.0*( par[6] - phi[0]) );
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi12(Double_t *phi, Double_t *par  )  //v4 only
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 0.0;
-   Double_t Fourth_Term = 2.0*par[3]*TMath::Cos( 4.0*( 0.0 - phi[0] ) );
-   Double_t Fifth_Term = 0.0;
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-Double_t TennGen::dNdphi13(Double_t *phi, Double_t *par  )  //v5 only
-{
-
-   Double_t Zero_Term = 1.0; 
-   Double_t First_Term = 0.0;
-   Double_t Second_Term = 0.0;
-   Double_t Third_Term = 0.0;
-   Double_t Fourth_Term = 0.0;
-   Double_t Fifth_Term = 2.0*par[4]*TMath::Cos( 5.0*( par[7] - phi[0]) );
-   
-   Double_t Phi_Dist_Harmonics = Zero_Term + First_Term + Second_Term + Third_Term + Fourth_Term + Fifth_Term;
-   
-   return Phi_Dist_Harmonics;
-}
-
-//____________________________________________________________________________________________________________________//
-//____________________________________________________________________________________________________________________//
-
-void TennGen::Set_Phi_Dist(Double_t pT , Double_t KF , Double_t Psi_1_event , Double_t Psi_3_event, Double_t Psi_5_event) {
-
-  if (Harmonics_Phi_Dist!=0) delete Harmonics_Phi_Dist;
-
-  if( HarmonicsFlag == 0){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi0,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-  
-  else if( HarmonicsFlag == 1){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi1,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-  
-  else if( HarmonicsFlag == 2){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi2,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-  
-  else if( HarmonicsFlag == 3){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi3,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-  
-  else if( HarmonicsFlag == 4){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi4,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 6){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi6,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 7){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi7,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 8){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi8,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 9){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi9,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 10){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi10,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 11){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi11,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 12){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi12,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-  else if( HarmonicsFlag == 13){
-    Harmonics_Phi_Dist = new TF1("Harmonics_Phi_Dist",dNdphi13,0,2.0*TMath::Pi(),8); 
-    Harmonics_Phi_Dist->SetNpx(1000);
-  }
-
-/*_________________________________________________________________________________*/
-   
-    if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v2_pi_eval = 0;
-    }
-
-    else if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v2_pi_eval = (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v3_pi_eval = 0;
-    }
-
-    else if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v3_pi_eval = (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v4_pi_eval = 0;
-    }
-
-    else if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v4_pi_eval = (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v5_pi_eval = 0;
-    }
-
-    else if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v5_pi_eval = (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-/*_________________________________________________________________________________*/
-
-    if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v2_K_eval = 0;
-    }
-
-    else if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v2_K_eval = (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v3_K_eval = 0;
-    }
-
-    else if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v3_K_eval = (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v4_K_eval = 0;
-    }
-
-    else if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v4_K_eval = (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v5_K_eval = 0;
-    }
-
-    else if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v5_K_eval = (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-/*_________________________________________________________________________________*/
-
-    if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v2_P_eval = 0;
-    }
-
-    else if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v2_P_eval = (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v3_P_eval = 0;
-    }
-
-    else if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v3_P_eval = (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v4_P_eval = 0;
-    }
-
-    else if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v4_P_eval = (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-    if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-      v5_P_eval = 0;
-    }
-
-    else if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-      v5_P_eval = (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-    }
-
-/*_________________________________________________________________________________*/ 
-  
-    if( KF == 111 || KF == 211 || KF == -211){
-  
-    Harmonics_Phi_Dist->SetParameter(0, v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-    Harmonics_Phi_Dist->SetParameter(1, v2_pi_eval                           );
-    Harmonics_Phi_Dist->SetParameter(2, v3_pi_eval                           );
-    Harmonics_Phi_Dist->SetParameter(3, v4_pi_eval                           );
-    Harmonics_Phi_Dist->SetParameter(4, v5_pi_eval                           );
-    Harmonics_Phi_Dist->SetParameter(5, Psi_1_event                          );
-    Harmonics_Phi_Dist->SetParameter(6, Psi_3_event                          );
-    Harmonics_Phi_Dist->SetParameter(7, Psi_5_event                          );
-
-    }
-  
-    else if( KF == 321 || KF == -321){
-  
-    Harmonics_Phi_Dist->SetParameter(0, v1_K->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-    Harmonics_Phi_Dist->SetParameter(1, v2_K_eval                           );
-    Harmonics_Phi_Dist->SetParameter(2, v3_K_eval                           );
-    Harmonics_Phi_Dist->SetParameter(3, v4_K_eval                           );
-    Harmonics_Phi_Dist->SetParameter(4, v5_K_eval                           );
-    Harmonics_Phi_Dist->SetParameter(5, Psi_1_event                         );
-    Harmonics_Phi_Dist->SetParameter(6, Psi_3_event                         );
-    Harmonics_Phi_Dist->SetParameter(7, Psi_5_event                         );
-  
-    }
-  
-    else if( KF == 2212 || KF == -2212){
-  
-    Harmonics_Phi_Dist->SetParameter(0, v1_P->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-    Harmonics_Phi_Dist->SetParameter(1, v2_P_eval                           );
-    Harmonics_Phi_Dist->SetParameter(2, v3_P_eval                           );
-    Harmonics_Phi_Dist->SetParameter(3, v4_P_eval                           );
-    Harmonics_Phi_Dist->SetParameter(4, v5_P_eval                           );
-    Harmonics_Phi_Dist->SetParameter(5, Psi_1_event                         );
-    Harmonics_Phi_Dist->SetParameter(6, Psi_3_event                         );
-    Harmonics_Phi_Dist->SetParameter(7, Psi_5_event                         );
-  
-    }
-    
-  } 
-
-//______________________________________________________________________________
-  TennGen::TennGen()//constructor
+TennGen::TennGen()//constructor
 {
 
   //CentralityBin = 0;
@@ -636,8 +184,6 @@ void TennGen::Set_Phi_Dist(Double_t pT , Double_t KF , Double_t Psi_1_event , Do
   
 
   //Harmonics_Phi_Dist_Rand = 0;
-
-  Harmonics_Phi_Dist = 0;
 
   New_Rand = 0;
 
@@ -713,18 +259,6 @@ void TennGen::Set_Phi_Dist(Double_t pT , Double_t KF , Double_t Psi_1_event , Do
   Psi_5_h->Sumw2();
 
   
-  //Test kMinus
-  //
-  // mass = 0.139570
-  //
-  // beta = 0.937493
-  //
-  // temp = 0.0838151
-  //
-  // n = 0.151064
-  //
-  // norm = 37751.6
-  //
 
 
 }
@@ -764,35 +298,10 @@ TennGen::~TennGen()//destructor
   delete v3_P;
   delete v4_P;
   delete v5_P;
-  delete Harmonics_Phi_Dist;
+  
   delete Harmonics_Phi_Dist_Rand;
 
-/*
-  //delete vn_QA_file;
-  //delete vn_QA_plots;
-  //delete Event_Plane_QA_plots;
 
-  delete v1_pi_h;
-  delete v2_pi_h;
-  delete v3_pi_h;
-  delete v4_pi_h;
-  delete v5_pi_h;
-  delete v1_K_h;
-  delete v2_K_h;
-  delete v3_K_h;
-  delete v4_K_h;
-  delete v5_K_h;
-  delete v1_P_h;
-  delete v2_P_h;
-  delete v3_P_h;
-  delete v4_P_h;
-  delete v5_P_h;
-  delete Psi_1_h;
-  delete Psi_2_h;
-  delete Psi_3_h;
-  delete Psi_4_h;
-  delete Psi_5_h;
-*/
 }
 
 void TennGen::InitializeBackground(){
@@ -884,21 +393,6 @@ void TennGen::GetRandomSeed(){
   cout<<"\n\n\n\n\nCurrent Seed = "<<Seed<<"\n\n\n\n\n"<<endl;
 }
 
-/*
-   UInt_t seed = (jobID+1)*17;
-  if( (seed>=0) && (seed<=900000000) ) {
-    pythia->SetMRPY(1, seed);                   // set seed
-    pythia->SetMRPY(2, 0);                      // use new seed
-    cout<<"Random Seed : "<<seed<<endl;
-  } else {cout << "error: time " << seed << " is not valid" << endl; exit(2);}
-   //____________________________________________________________________
-  */
-//TF1 *pXdist;
-
-	
-//____________FITTING___PARAMETER ARRAYS_____x_dim = centrality bin________y_dim = parameter________________________________//
-
-///*
 
 void TennGen::Setv1_Params(){
 
@@ -1053,8 +547,6 @@ void TennGen::Setv5_Params(){
 
 }
 
-//*/
-
 void TennGen::SetpiPlusParams(){
 
   const Double_t piPlus_params[8][5] = { { 0.139570 , 0.947908 , 0.0737422 , 0.968789 , 2207060 } , { 0.139570 , 0.943360 , 0.078973 , 1.02539 , 1500940 } , { 0.139570 , 0.95381 , 0.0708164 , 0.987509 , 1603690 } , { 0.139570 , 0.95409 , 0.0673556 , 1.00806 , 1319880 } , { 0.139570 , 0.959811 , 0.0676647 , 1.08715 , 861341 } , { 0.139570 , 0.957266 , 0.08703763 , 1.21600, 468819 } , { 0.139570 , 0.949426 , 0.078257 , 1.46891 , 190742 } , { 0.139570 , 0.954145 , 0.0744700 , 1.58732, 119812 }};
@@ -1140,68 +632,18 @@ void TennGen::SetpiZeroParams(){
 
 }
 
+Double_t TennGen::dNdPhi(Double_t phiPart, Double_t pT, 
+  Double_t Psi1 , Double_t Psi2, Double_t Psi3, Double_t Psi4, Double_t Psi5,
+  Double_t v1,Double_t v2,Double_t v3,Double_t v4,Double_t v5){
+    return (1.0+2.0*(v1*TMath::Cos(phiPart-Psi1) + v2*TMath::Cos(2.0*(phiPart-Psi2)) + v3*TMath::Cos(3.0*(phiPart-Psi3))+ v4*TMath::Cos(4.0*(phiPart-Psi4)) + v5*TMath::Cos(5.0*(phiPart-Psi5))));
+}
 
 TClonesArray *TennGen::GetBackground(){
+  
   cout<<"Got Background"<<endl;
 
-//TF1 *TennGen::Random1(){
+  const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 30)/0.5)) , (TMath::Ceil((EtaRange * 29)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) } , { (TMath::Ceil((EtaRange * 541)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) , (TMath::Ceil((EtaRange * 81)/0.5)) , (TMath::Ceil((EtaRange * 80)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) } , { (TMath::Ceil((EtaRange * 406)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) } , { (TMath::Ceil((EtaRange * 274)/0.5)) , (TMath::Ceil((EtaRange * 273 )/0.5)), (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 273)/0.5)) } , { (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) } , { (TMath::Ceil((EtaRange * 111)/0.5)) , (TMath::Ceil((EtaRange * 110)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , 	(TMath::Ceil((EtaRange * 110)/0.5)) } , { (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) } , { (TMath::Ceil((EtaRange * 33)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) , ((TMath::Ceil(EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) } }; //setting multiplicities for particles
 
-//___________________________________________________________________________________________________________//
-//____________YIELD__ARRAYS_____x_dim = centrality bin________y_dim = PARTICLE________________________________//
-//____________y_diM -- INDEX___ 0 = pi+____1 = pi-____2 = K-____3 = K+____4 = p____5 = pbar_____6 = pi0_________//
-//const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 733)/0.5)) , (TMath::Ceil((EtaRange * 732)/0.5)) , (TMath::Ceil((EtaRange * 109)/0.5)) , (TMath::Ceil((EtaRange * 109)/0.5)) , (TMath::Ceil((EtaRange * 34)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) , (TMath::Ceil((EtaRange * 732)/0.5)) } , { (TMath::Ceil((EtaRange * 606)/0.5)) , (TMath::Ceil((EtaRange * 604)/0.5)) , (TMath::Ceil((EtaRange * 91)/0.5)) , (TMath::Ceil((EtaRange * 90)/0.5)) , (TMath::Ceil((EtaRange * 28)/0.5)) , (TMath::Ceil((EtaRange * 28)/0.5)) , (TMath::Ceil((EtaRange * 604)/0.5)) } , { (TMath::Ceil((EtaRange * 455)/0.5)) , (TMath::Ceil((EtaRange * 453)/0.5)) , (TMath::Ceil((EtaRange * 68)/0.5)) , (TMath::Ceil((EtaRange * 68)/0.5)) , (TMath::Ceil((EtaRange * 21.0)/0.5)) , (TMath::Ceil((EtaRange * 21)/0.5)) , (TMath::Ceil((EtaRange * 453)/0.5)) } , { (TMath::Ceil((EtaRange * 307)/0.5)) , (TMath::Ceil((EtaRange * 306 )/0.5)), (TMath::Ceil((EtaRange * 46)/0.5)) , (TMath::Ceil((EtaRange * 46)/0.5)) , (TMath::Ceil((EtaRange * 14)/0.5)) , (TMath::Ceil((EtaRange * 14)/0.5)) , (TMath::Ceil((EtaRange * 306)/0.5)) } , { (TMath::Ceil((EtaRange * 201)/0.5)) , (TMath::Ceil((EtaRange * 200)/0.5)) , (TMath::Ceil((EtaRange * 30)/0.5)) , (TMath::Ceil((EtaRange * 30)/0.5)) , (TMath::Ceil((EtaRange * 10)/0.5)) , (TMath::Ceil((EtaRange * 10)/0.5)) , (TMath::Ceil((EtaRange * 200)/0.5)) } , { (TMath::Ceil((EtaRange * 124)/0.5)) , (TMath::Ceil((EtaRange * 123)/0.5)) , (TMath::Ceil((EtaRange * 18)/0.5)) , (TMath::Ceil(EtaRange/0.5)) * 18 , (TMath::Ceil(EtaRange/0.5)) * 6 , (TMath::Ceil(EtaRange/0.5)) * 6 , (TMath::Ceil((EtaRange * 123)/0.5)) } , { (TMath::Ceil((EtaRange * 71)/0.5)) , (TMath::Ceil((EtaRange * 71)/0.5)) , (TMath::Ceil((EtaRange * 10)/0.5)) , (TMath::Ceil((EtaRange * 10)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 71)/0.5)) } , { (TMath::Ceil((EtaRange * 37)/0.5)) , (TMath::Ceil((EtaRange * 37)/0.5)) , ((TMath::Ceil(EtaRange * 5)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 37)/0.5)) } };
-
-const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 97)/0.5)) , (TMath::Ceil((EtaRange * 30)/0.5)) , (TMath::Ceil((EtaRange * 29)/0.5)) , (TMath::Ceil((EtaRange * 654)/0.5)) } , { (TMath::Ceil((EtaRange * 541)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) , (TMath::Ceil((EtaRange * 81)/0.5)) , (TMath::Ceil((EtaRange * 80)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 25)/0.5)) , (TMath::Ceil((EtaRange * 539)/0.5)) } , { (TMath::Ceil((EtaRange * 406)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 61)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 19)/0.5)) , (TMath::Ceil((EtaRange * 404)/0.5)) } , { (TMath::Ceil((EtaRange * 274)/0.5)) , (TMath::Ceil((EtaRange * 273 )/0.5)), (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 41)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 13)/0.5)) , (TMath::Ceil((EtaRange * 273)/0.5)) } , { (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 27)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 179)/0.5)) } , { (TMath::Ceil((EtaRange * 111)/0.5)) , (TMath::Ceil((EtaRange * 110)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 16)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , (TMath::Ceil((EtaRange * 5)/0.5)) , 	(TMath::Ceil((EtaRange * 110)/0.5)) } , { (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 9)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 63)/0.5)) } , { (TMath::Ceil((EtaRange * 33)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) , ((TMath::Ceil(EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 4)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 2)/0.5)) , (TMath::Ceil((EtaRange * 33)/0.5)) } }; //setting multiplicities for particles
-
-
-
-//const Double_t yield_arr[8][7] = { { 5000 , 5000 , 5000 , 5000 , 5000 , 5000 , 5000 } , { 606 , 604 , 91 , 90 , 28 , 28 , 604 } , { 455 , 453 , 68 , 68 , 21.0 , 21 , 453 } , { 307 , 306 , 46 , 46 , 14 , 14 , 306 } , { 201 , 200 , 30 , 30 , 10 , 10 , 200 } , { 124 , 123 , 18 , 18 , 6 , 6 , 123 } , { 71 , 71 , 10 , 10 , 4 , 4 , 71 } , { 37 , 37 , 5 , 5 , 2 , 2 , 37 } }; 
-
-  Double_t v2_pi_eval1;
-  Double_t v3_pi_eval1;
-  Double_t v4_pi_eval1;
-  Double_t v5_pi_eval1;
-
-  Double_t v2_K_eval1;
-  Double_t v3_K_eval1;
-  Double_t v4_K_eval1;
-  Double_t v5_K_eval1;
-
-  Double_t v2_P_eval1;
-  Double_t v3_P_eval1;
-  Double_t v4_P_eval1;
-  Double_t v5_P_eval1;
-
-
-/*
-  if (etadist!=0) delete etadist;
-  if (Psi_1!=0) delete Psi_1;
-  if (Psi_3!=0) delete Psi_3;
-  if (Psi_5!=0) delete Psi_5;
-  if (Harmonics_Phi_Dist_Rand!=0) delete Harmonics_Phi_Dist_Rand;
-  if (New_Rand!=0) delete New_Rand;
-
-  New_Rand = new TRandom3(Seed);
-
-  etadist = new TF1("etadist","[0]",-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-  etadist->SetParameter(0,1.);
-  //cout << "\n\n\nRandom etadist Seed from .cxx = "<< (etadist->GetSeed()) <<" for Event " << endl;
-  
-  Psi_1 = new TRandom3(New_Rand->Uniform(0 , 1000));
-  cout << "Random Psi_1 Seed from .cxx = "<< (Psi_1->GetSeed()) <<" for Event " << endl;
-
-  Psi_3 = new TRandom3(New_Rand->Uniform(0 , 1000));
-  cout << "Random Psi_3 Seed from .cxx = "<< (Psi_3->GetSeed()) <<" for Event " << endl;
-
-  Psi_5 = new TRandom3(New_Rand->Uniform(0 , 1000));
-  cout << "Random Psi_5 Seed from .cxx = "<< (Psi_5->GetSeed()) <<" for Event " << endl;
-
-  Harmonics_Phi_Dist_Rand = new TRandom3(New_Rand->Uniform(0 , 1000));
-  cout << "Random Harmonics_Phi_Dist_Rand Seed from .cxx = "<< (Harmonics_Phi_Dist_Rand->GetSeed()) <<" for Event \n\n\n" << endl;
-  */
-  //Psi_1_event.clear();
-  //Psi_3_event.clear();
-  //Psi_5_event.clear();
   Double_t Psi_1_event = Psi_1->Uniform( 0 , 2.0*TMath::Pi());
   cout << "\n\n\nPsi_1 from .cxx = "<< Psi_1_event <<" for Event " << endl;
   cout << "Random Psi_1 Seed from .cxx = "<< (Psi_1->GetSeed()) <<" for Event " << endl;
@@ -1219,6 +661,52 @@ const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMat
   cout << "Random Psi_5 Seed from .cxx = "<< (Psi_5->GetSeed()) <<" for Event \n\n\n" << endl;
   Psi_5_h->Fill(Psi_5_event);
   //Psi_5_event = (5*TMath::Pi()/2);
+  
+ 
+  Int_t vN_bool_Array[5];
+  if(HarmonicsFlag == 0){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,1,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 1){
+		Int_t vN_bool_Array_temp[5] = {0,1,1,1,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 2){
+		Int_t vN_bool_Array_temp[5] = {0,0,1,1,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 3){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,1,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 4){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,0,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 5){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,0,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 6){
+		Int_t vN_bool_Array_temp[5] = {1,1,0,1,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 7){
+		Int_t vN_bool_Array_temp[5] = {1,1,1,0,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 8){
+		Int_t vN_bool_Array_temp[5] = {1,0,1,1,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 9){
+		Int_t vN_bool_Array_temp[5] = {1,0,0,0,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 10){
+		Int_t vN_bool_Array_temp[5] = {0,1,0,0,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 11){
+		Int_t vN_bool_Array_temp[5] = {0,0,1,0,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 12){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,1,0};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+  else if(HarmonicsFlag == 13){
+		Int_t vN_bool_Array_temp[5] = {0,0,0,0,1};
+		for(int j=0;j<5;j++){  vN_bool_Array[j] = vN_bool_Array_temp[j];}}
+
 
   Int_t Npart = 0;
   for (Int_t n = 0 ; n < 7 ; n++){
@@ -1226,656 +714,133 @@ const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMat
   }
   //cout<<"Number of Total Particles for Centrality Bin "<<CentralityBin<<" = "<<Npart<<endl;
   cout<<"\n\n\n\n\nSeed From the .cxx = "<<Seed<<"\n\n\n\n\n"<<endl;
-  for( Int_t N = 0 ; N < yield_arr[CentralityBin][0] ; N++){ //piPlus , kF = 211
+  Int_t Nparts_total=0;
+  for(Int_t n=0; n<7; n++){
+    cout << "Starting n=" <<n<<endl;
+    for( Int_t N = 0 ; N < yield_arr[CentralityBin][n] ; N++){
+
+      TMCParticle *newParticle = (TMCParticle*)BkgdArray->ConstructedAt(Nparts_total);
+      Double_t pT;
+      if(n == 0) pT = pTdist_piPlus->GetRandom();
+      else if(n==1)  pT = pTdist_piMinus->GetRandom();
+      else if(n==2)  pT = pTdist_kPlus->GetRandom();
+      else if(n==3) pT = pTdist_kMinus->GetRandom();
+      else if(n==4) pT = pTdist_p->GetRandom();
+      else if(n==5) pT = pTdist_pbar->GetRandom();
+      else if(n==6) pT = pTdist_piZero->GetRandom();
+
+      Double_t v1_eval, v2_eval, v3_eval, v4_eval, v5_eval;
+
+      
+
+      if(n==0||n==1||n==6){ // get pion vN
+        v1_eval = v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+      else if(n==2||n==3){ // get kaon vN
+        v1_eval = v1_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+      else if(n==4||n==5){ // get proton vN
+        v1_eval = v1_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v2_eval = v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v3_eval = v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v4_eval = v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+        v5_eval = v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 );
+      }
+
+      if(v2_eval<0.0) v2_eval =0;
+      if(v3_eval<0.0) v3_eval =0;
+      if(v4_eval<0.0) v4_eval =0;
+      if(v5_eval<0.0) v5_eval =0;
+
+
+      // turn off harmonics which are not desired 
+      Double_t v1 = vN_bool_Array[0]*v1_eval;
+      Double_t v2 = vN_bool_Array[1]*v2_eval;
+      Double_t v3 = vN_bool_Array[2]*v3_eval;
+      Double_t v4 = vN_bool_Array[3]*v4_eval;
+      Double_t v5 = vN_bool_Array[4]*v5_eval;
+
+      Double_t Max_Phi = (1.0+2.0*(TMath::Abs(v1)+v2+v3+v4+v5));
+      Int_t CHECK = 0.0;
      
-      if( N==0 ){
-        //cout<<"piPlus getting created now"<<endl;
-      }  
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
-  
-      TMCParticle *piPlus = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,piPlus_params[CentralityBin][0]);
-      pTdist->SetParameter(1,piPlus_params[CentralityBin][1]);
-      pTdist->SetParameter(2,piPlus_params[CentralityBin][2]);
-      pTdist->SetParameter(3,piPlus_params[CentralityBin][3]);
-      pTdist->SetParameter(4,piPlus_params[CentralityBin][4]);
-      */
-      //cout<<"Params for iteration "<<N<<" set now"<<endl;
-      Double_t pT = pTdist_piPlus->GetRandom();
-
-/*_________________________________________________________________________________*/
-
-      if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_pi_eval1 = 0;
+      while(CHECK!=1){
+         Double_t dndphi = Harmonics_Phi_Dist_Rand->Uniform(0.0,Max_Phi);
+         Double_t test_phi = Harmonics_Phi_Dist_Rand->Uniform(0,2.0*TMath::Pi());
+         Double_t VN_Value = dNdPhi(test_phi,pT,Psi_1_event,0.0,Psi_3_event,0.0,Psi_5_event,v1,v2,v3,v4,v5);
+         if(dndphi < VN_Value) {
+          CHECK = 1;
+          phi = test_phi;
+         }
       }
 
-      else if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_pi_eval1 = (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
+      if(n==0||n==1||n==6){ // get pion vN
+        v1_pi_h->Fill( pT , v1 );
+        v2_pi_h->Fill( pT , v2 );
+        v3_pi_h->Fill( pT , v3);
+        v4_pi_h->Fill( pT , v4);
+        v5_pi_h->Fill( pT , v5);
+      }
+      else if(n==2||n==3){ // get kaon vN
+        v1_K_h->Fill( pT , v1 );
+        v2_K_h->Fill( pT , v2 );
+        v3_K_h->Fill( pT , v3);
+        v4_K_h->Fill( pT , v4);
+        v5_K_h->Fill( pT , v5);
+      }
+      else if(n==4||n==5){ // get proton vN
+        v1_P_h->Fill( pT , v1 );
+        v2_P_h->Fill( pT , v2 );
+        v3_P_h->Fill( pT , v3);
+        v4_P_h->Fill( pT , v4);
+        v5_P_h->Fill( pT , v5);
       }
 
-      if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_pi_eval1 = 0;
-      }
+      v1_sq_h->Fill( v1*v1 );
+      v2_sq_h->Fill( v2*v2 );
+      v3_sq_h->Fill( v3*v3 );
+      v4_sq_h->Fill( v4*v4 );
+      v5_sq_h->Fill( v5*v5 );
 
-      else if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_pi_eval1 = (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_pi_eval1 = 0;
-      }
-
-      else if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_pi_eval1 = (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_pi_eval1 = 0;
-      }
-
-      else if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_pi_eval1 = (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/
-      //cout<<"pT for iteration "<<N<<" set now"<<endl;
-      //phi.clear();
-      if( HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , 211 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for Pi+ now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_pi_h->Fill( pT , v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_pi_h->Fill( pT , v2_pi_eval1 );
-        v3_pi_h->Fill( pT , v3_pi_eval1 );
-        v4_pi_h->Fill( pT , v4_pi_eval1 );
-        v5_pi_h->Fill( pT , v5_pi_eval1 );
-
-        v1_sq_h->Fill( v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_pi_eval1*v2_pi_eval1 );
-        v3_sq_h->Fill( v3_pi_eval1*v3_pi_eval1 );
-        v4_sq_h->Fill( v4_pi_eval1*v4_pi_eval1 );
-        v5_sq_h->Fill( v5_pi_eval1*v5_pi_eval1 );
-        //cout<<"you got your phi from the fourier"<<endl;
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );  
-
-        v1_pi_h->Fill( pT ,  0. );
-        v2_pi_h->Fill( pT ,  0. );
-        v3_pi_h->Fill( pT ,  0. );
-        v4_pi_h->Fill( pT ,  0. );
-        v5_pi_h->Fill( pT ,  0. ); 
-        //cout<<"phi is random noise"<<endl;
-      }
-      //Double_t eta = etadist->GetRandom();
       Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      piPlus -> SetPx( pT * TMath::Cos( phi ) );
-      piPlus -> SetPy( pT * TMath::Sin( phi ) );
-      piPlus -> SetPz( pT*  TMath::SinH( eta ) );
-      piPlus -> SetMass(0.139570);
-      piPlus -> SetKF(211);
-      piPlus -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.139570*0.139570  ) );
-      
+      Double_t particle_mass;
+      Int_t particle_KF;   
+
+      if(n == 0) particle_mass = 0.139570;
+      else if(n==1) particle_mass = 0.139570;
+      else if(n==2) particle_mass = 0.493677;
+      else if(n==3) particle_mass = 0.493677;
+      else if(n==4) particle_mass = 0.938272;
+      else if(n==5) particle_mass = 0.938272;
+      else if(n==6) particle_mass = 0.139977;
+
+      if(n == 0) particle_KF = 211;
+      else if(n==1) particle_KF = -211;
+      else if(n==2) particle_KF = 321;
+      else if(n==3) particle_KF = -321;
+      else if(n==4) particle_KF = 2212;
+      else if(n==5) particle_KF = -2212;
+      else if(n==6) particle_KF = 111;
+
+      newParticle -> SetPx( pT * TMath::Cos( phi ) );
+      newParticle -> SetPy( pT * TMath::Sin( phi ) );
+      newParticle -> SetPz( pT*  TMath::SinH( eta ) );
+      newParticle -> SetMass(particle_mass);
+      newParticle -> SetKF(particle_KF);
+      newParticle -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + particle_mass*particle_mass  ) );
+    
+
+      Nparts_total++;
     }
-    
-    for( Int_t N = yield_arr[CentralityBin][0] ; N < (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1]) ; N++  ){  //piMinus , kF = -211
-    
-      if( N== yield_arr[CentralityBin][0] ){
-        //cout<<"piMinus getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
 
-      TMCParticle *piMinus = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,piMinus_params[CentralityBin][0]);
-      pTdist->SetParameter(1,piMinus_params[CentralityBin][1]);
-      pTdist->SetParameter(2,piMinus_params[CentralityBin][2]);
-      pTdist->SetParameter(3,piMinus_params[CentralityBin][3]);
-      pTdist->SetParameter(4,piMinus_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_piMinus->GetRandom();
-
-/*_________________________________________________________________________________*/
-
-      if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_pi_eval1 = 0;
-      }
-
-      else if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_pi_eval1 = (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_pi_eval1 = 0;
-      }
-
-      else if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_pi_eval1 = (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_pi_eval1 = 0;
-      }
-
-      else if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_pi_eval1 = (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_pi_eval1 = 0;
-      }
-
-      else if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_pi_eval1 = (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/
-      //phi.clear();
-      if (HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , -211 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for Pi- now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_pi_h->Fill( pT , v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_pi_h->Fill( pT , v2_pi_eval1 );
-        v3_pi_h->Fill( pT , v3_pi_eval1 );
-        v4_pi_h->Fill( pT , v4_pi_eval1 );
-        v5_pi_h->Fill( pT , v5_pi_eval1 );
-
-        v1_sq_h->Fill( v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_pi_eval1*v2_pi_eval1 );
-        v3_sq_h->Fill( v3_pi_eval1*v3_pi_eval1 );
-        v4_sq_h->Fill( v4_pi_eval1*v4_pi_eval1 );
-        v5_sq_h->Fill( v5_pi_eval1*v5_pi_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_pi_h->Fill( pT ,  0. );
-        v2_pi_h->Fill( pT ,  0. );
-        v3_pi_h->Fill( pT ,  0. );
-        v4_pi_h->Fill( pT ,  0. );
-        v5_pi_h->Fill( pT ,  0. ); 
-      }
-      //Double_t eta = etadist->GetRandom();
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      piMinus -> SetPx( pT * TMath::Cos( phi ) );
-      piMinus -> SetPy( pT * TMath::Sin( phi ) );
-      piMinus -> SetPz( pT*  TMath::SinH( eta ) );    
-      piMinus -> SetMass(0.139570);
-      piMinus -> SetKF(-211);
-      piMinus -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.139570*0.139570  ) );
-
-    }
-    
-    for( Int_t N = (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1]) ; N < (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2]) ; N++){ //kPlus , kF = 321
-    
-      if( N == (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1]) ){
-        //cout<<"kPlus getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
-    
-      TMCParticle *k_Plus = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,kPlus_params[CentralityBin][0]);
-      pTdist->SetParameter(1,kPlus_params[CentralityBin][1]);
-      pTdist->SetParameter(2,kPlus_params[CentralityBin][2]);
-      pTdist->SetParameter(3,kPlus_params[CentralityBin][3]);
-      pTdist->SetParameter(4,kPlus_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_kPlus->GetRandom();
-/*_________________________________________________________________________________*/
-
-      if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_K_eval1 = 0;
-      }
-
-      else if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_K_eval1 = (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_K_eval1 = 0;
-      }
-
-      else if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_K_eval1 = (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_K_eval1 = 0;
-      }
-
-      else if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_K_eval1 = (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_K_eval1 = 0;
-      }
-
-      else if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_K_eval1 = (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/
-
-      //phi.clear();
-      if (HarmonicsFlag != 5){
-        //Set_Phi_Dist(pT , 321 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for K+ now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_K_h->Fill( pT , v1_K->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_K_h->Fill( pT , v2_K_eval1 );
-        v3_K_h->Fill( pT , v3_K_eval1 );
-        v4_K_h->Fill( pT , v4_K_eval1 );
-        v5_K_h->Fill( pT , v5_K_eval1 );
-
-        v1_sq_h->Fill( v1_K->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_K->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_K_eval1*v2_K_eval1 );
-        v3_sq_h->Fill( v3_K_eval1*v3_K_eval1 );
-        v4_sq_h->Fill( v4_K_eval1*v4_K_eval1 );
-        v5_sq_h->Fill( v5_K_eval1*v5_K_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_K_h->Fill( pT ,  0. );
-        v2_K_h->Fill( pT ,  0. );
-        v3_K_h->Fill( pT ,  0. );
-        v4_K_h->Fill( pT ,  0. );
-        v5_K_h->Fill( pT ,  0. ); 
-      }
-      //Double_t eta = etadist->GetRandom();
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      k_Plus -> SetPx( pT * TMath::Cos( phi ) );
-      k_Plus -> SetPy( pT * TMath::Sin( phi ) );
-      k_Plus -> SetPz( pT*  TMath::SinH( eta ) );
-      k_Plus -> SetMass(0.493677);
-      k_Plus -> SetKF(321);
-      k_Plus -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.493677*0.493677  ) );
-    }
-    
-    for( Int_t N = (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2]) ; N < ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3]) ; N++ ){ //kMinus , kF = -321
-    
-      if( N == (yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2]) ){
-        //cout<<"kMinus getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
-    
-      TMCParticle *kMinus = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,kMinus_params[CentralityBin][0]);
-      pTdist->SetParameter(1,kMinus_params[CentralityBin][1]);
-      pTdist->SetParameter(2,kMinus_params[CentralityBin][2]);
-      pTdist->SetParameter(3,kMinus_params[CentralityBin][3]);
-      pTdist->SetParameter(4,kMinus_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_kMinus->GetRandom();
-/*_________________________________________________________________________________*/
-
-      if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_K_eval1 = 0;
-      }
-
-      else if( (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_K_eval1 = (v2_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_K_eval1 = 0;
-      }
-
-      else if( (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_K_eval1 = (v3_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_K_eval1 = 0;
-      }
-
-      else if( (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_K_eval1 = (v4_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_K_eval1 = 0;
-      }
-
-      else if( (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_K_eval1 = (v5_K->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/
-
-      //phi.clear();
-      if (HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , -321 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for K- now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_K_h->Fill( pT , v1_K->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_K_h->Fill( pT , v2_K_eval1 );
-        v3_K_h->Fill( pT , v3_K_eval1 );
-        v4_K_h->Fill( pT , v4_K_eval1 );
-        v5_K_h->Fill( pT , v5_K_eval1 );
-
-        v1_sq_h->Fill( v1_K->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_K->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_K_eval1*v2_K_eval1 );
-        v3_sq_h->Fill( v3_K_eval1*v3_K_eval1 );
-        v4_sq_h->Fill( v4_K_eval1*v4_K_eval1 );
-        v5_sq_h->Fill( v5_K_eval1*v5_K_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_K_h->Fill( pT ,  0. );
-        v2_K_h->Fill( pT ,  0. );
-        v3_K_h->Fill( pT ,  0. );
-        v4_K_h->Fill( pT ,  0. );
-        v5_K_h->Fill( pT ,  0. ); 
-      }
-      //Double_t eta = etadist->GetRandom();
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      kMinus -> SetPx( pT * TMath::Cos( phi ) );
-      kMinus -> SetPy( pT * TMath::Sin( phi ) );
-      kMinus -> SetPz( pT*  TMath::SinH( eta ) );
-      kMinus -> SetMass(0.493677);
-      kMinus -> SetKF(-321);
-      kMinus -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.493677*0.493677 ) );
-    }
-    
-    for( Int_t N = ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3])  ; N < ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] ) ; N++ ){ //proton , kF = 2212
-    
-      if( N == ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3]) ){
-        //cout<<"p getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
-    
-      TMCParticle *p = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,p_params[CentralityBin][0]);
-      pTdist->SetParameter(1,p_params[CentralityBin][1]);
-      pTdist->SetParameter(2,p_params[CentralityBin][2]);
-      pTdist->SetParameter(3,p_params[CentralityBin][3]);
-      pTdist->SetParameter(4,p_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_p->GetRandom();
-/*_________________________________________________________________________________*/
-
-      if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_P_eval1 = 0;
-      }
-
-      else if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_P_eval1 = (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_P_eval1 = 0;
-      }
-
-      else if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_P_eval1 = (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_P_eval1 = 0;
-      }
-
-      else if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_P_eval1 = (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_P_eval1 = 0;
-      }
-
-      else if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_P_eval1 = (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/ 
-      //phi.clear();
-      if(HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , 2212 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for P now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_P_h->Fill( pT , v1_P->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_P_h->Fill( pT , v2_P_eval1 );
-        v3_P_h->Fill( pT , v3_P_eval1 );
-        v4_P_h->Fill( pT , v4_P_eval1 );
-        v5_P_h->Fill( pT , v5_P_eval1 );
-
-        v1_sq_h->Fill( v1_P->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_P->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_P_eval1*v2_P_eval1 );
-        v3_sq_h->Fill( v3_P_eval1*v3_P_eval1 );
-        v4_sq_h->Fill( v4_P_eval1*v4_P_eval1 );
-        v5_sq_h->Fill( v5_P_eval1*v5_P_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_P_h->Fill( pT ,  0. );
-        v2_P_h->Fill( pT ,  0. );
-        v3_P_h->Fill( pT ,  0. );
-        v4_P_h->Fill( pT ,  0. );
-        v5_P_h->Fill( pT ,  0. ); 
-      }
-      //Double_t eta = etadist->GetRandom();
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      p -> SetPx( pT * TMath::Cos( phi ) );
-      p -> SetPy( pT * TMath::Sin( phi ) );
-      p -> SetPz( pT*  TMath::SinH( eta ) );
-      p -> SetMass(0.938272);
-      p -> SetKF(2212);
-      p -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.938272*0.938272  ) );
-    }
-    
-    for( Int_t N = ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] )  ; N < ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] + yield_arr[CentralityBin][5] ) ; N++ ){ //anti-proton , kF = -2212
-    
-      if( N == ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] ) ){
-        //cout<<"pbar getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
- 
-      TMCParticle *pbar = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,pbar_params[CentralityBin][0]);
-      pTdist->SetParameter(1,pbar_params[CentralityBin][1]);
-      pTdist->SetParameter(2,pbar_params[CentralityBin][2]);
-      pTdist->SetParameter(3,pbar_params[CentralityBin][3]);
-      pTdist->SetParameter(4,pbar_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_pbar->GetRandom();
-/*_________________________________________________________________________________*/
-
-      if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_P_eval1 = 0;
-      }
-
-      else if( (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_P_eval1 = (v2_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_P_eval1 = 0;
-      }
-
-      else if( (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_P_eval1 = (v3_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_P_eval1 = 0;
-      }
-
-      else if( (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_P_eval1 = (v4_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_P_eval1 = 0;
-      }
-
-      else if( (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_P_eval1 = (v5_P->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-/*_________________________________________________________________________________*/ 
-      //phi.clear();
-      if(HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , -2212 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for Pbar now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_P_h->Fill( pT , v1_P->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_P_h->Fill( pT , v2_P_eval1 );
-        v3_P_h->Fill( pT , v3_P_eval1 );
-        v4_P_h->Fill( pT , v4_P_eval1 );
-        v5_P_h->Fill( pT , v5_P_eval1 );
-
-        v1_sq_h->Fill( v1_P->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_P->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_P_eval1*v2_P_eval1 );
-        v3_sq_h->Fill( v3_P_eval1*v3_P_eval1 );
-        v4_sq_h->Fill( v4_P_eval1*v4_P_eval1 );
-        v5_sq_h->Fill( v5_P_eval1*v5_P_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_P_h->Fill( pT ,  0. );
-        v2_P_h->Fill( pT ,  0. );
-        v3_P_h->Fill( pT ,  0. );
-        v4_P_h->Fill( pT ,  0. );
-        v5_P_h->Fill( pT ,  0. );
-      }
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t eta = etadist->GetRandom();
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      pbar -> SetPx( pT * TMath::Cos( phi ) );
-      pbar -> SetPy( pT * TMath::Sin( phi ) );
-      pbar -> SetPz( pT*  TMath::SinH( eta ) );
-      pbar -> SetMass(0.938272);
-      pbar -> SetKF(-2212);
-      pbar -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.938272*0.938272 ) );
-    
-    }
-    
-    for( Int_t N = ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] + yield_arr[CentralityBin][5] )  ; N < Npart ; N++ ){ //piZer0 , kF = 111
-    
-          if( N == ( yield_arr[CentralityBin][0] + yield_arr[CentralityBin][1] + yield_arr[CentralityBin][2] + yield_arr[CentralityBin][3] + yield_arr[CentralityBin][4] + yield_arr[CentralityBin][5] ) ){
-        //cout<<"piZero getting created now"<<endl;
-      }
-      
-      //cout<<"Loop Iteration in .cxx  is at "<<N<<"th iteration"<<endl;
-    
-        
-      TMCParticle *piZero = (TMCParticle*)BkgdArray->ConstructedAt(N);
-      /*
-      pTdist->SetParameter(0,piZero_params[CentralityBin][0]);
-      pTdist->SetParameter(1,piZero_params[CentralityBin][1]);
-      pTdist->SetParameter(2,piZero_params[CentralityBin][2]);
-      pTdist->SetParameter(3,piZero_params[CentralityBin][3]);
-      pTdist->SetParameter(4,piZero_params[CentralityBin][4]);
-      */
-      Double_t pT = pTdist_piZero->GetRandom();
-
-/*_________________________________________________________________________________*/
-
-      if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v2_pi_eval1 = 0;
-      }
-
-      else if( (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v2_pi_eval1 = (v2_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v3_pi_eval1 = 0;
-      }
-
-      else if( (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v3_pi_eval1 = (v3_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v4_pi_eval1 = 0;
-      }
-
-      else if( (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v4_pi_eval1 = (v4_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-      if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) < 0 ){
-        v5_pi_eval1 = 0;
-      }
-
-      else if( (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 )) >= 0 ){
-        v5_pi_eval1 = (v5_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ));
-      }
-
-
-/*_________________________________________________________________________________*/
-      //phi.clear();
-      if(HarmonicsFlag != 5){
-        Set_Phi_Dist(pT , 111 , Psi_1_event , Psi_3_event , Psi_5_event);
-        //cout<<"\nGetting Phi for PiZero now\n"<<endl;
-        phi = Harmonics_Phi_Dist->GetRandom();
-
-        v1_pi_h->Fill( pT , v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0 ) );
-        v2_pi_h->Fill( pT , v2_pi_eval1 );
-        v3_pi_h->Fill( pT , v3_pi_eval1 );
-        v4_pi_h->Fill( pT , v4_pi_eval1 );
-        v5_pi_h->Fill( pT , v5_pi_eval1 );
-
-        v1_sq_h->Fill( v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0)*v1_pi->Eval( pT , 0.0 , 0.0 ,  0.0) );
-        v2_sq_h->Fill( v2_pi_eval1*v2_pi_eval1 );
-        v3_sq_h->Fill( v3_pi_eval1*v3_pi_eval1 );
-        v4_sq_h->Fill( v4_pi_eval1*v4_pi_eval1 );
-        v5_sq_h->Fill( v5_pi_eval1*v5_pi_eval1 );
-      }
-      else if(HarmonicsFlag == 5){
-        phi = Harmonics_Phi_Dist_Rand->Uniform(0 , 2.0*TMath::Pi() );
-
-        v1_pi_h->Fill( pT ,  0. );
-        v2_pi_h->Fill( pT ,  0. );
-        v3_pi_h->Fill( pT ,  0. );
-        v4_pi_h->Fill( pT ,  0. );
-        v5_pi_h->Fill( pT ,  0. ); 
-      }
-      //Double_t eta = etadist->GetRandom();
-      Double_t eta = etadist->Uniform(-0.5*(EtaRange/0.5) , 0.5*(EtaRange/0.5));
-      //Double_t phi = phidist ->Uniform( 0. , 2.0*TMath::Pi() );
-      piZero -> SetPx( pT * TMath::Cos( phi ) );
-      piZero -> SetPy( pT * TMath::Sin( phi ) );
-      piZero -> SetPz( pT*  TMath::SinH( eta ) );    
-      piZero -> SetMass(0.139977);
-      piZero -> SetKF(111);
-      piZero -> SetEnergy( TMath::Sqrt( (pT * TMath::Cos( phi )*pT * TMath::Cos( phi )) + (pT * TMath::Sin( phi )*pT * TMath::Sin( phi )) + (pT*  TMath::SinH( eta )*pT*  TMath::SinH( eta )) + 0.139977*0.139977  ) );
-    
-    }    
-  //bob->SetPx(gRandom->Uniform( 1.));
-  //bob->SetPy(gRandom->Gaus( 0.5 , 0.2 ) );
-  //bob->SetPz(gRandom->BreitWigner( 0.5 , 0.3 ) );
-  //part -> SetPx( pXdist->GetRandom() );
-  //Add part to TClonesArray
-
+  }
 
   if(PRINTQA == kFALSE ){ //empty out the histograms if you don't want to print them out, we don't want to take up too much memory
     
@@ -1908,154 +873,6 @@ const Double_t yield_arr[8][7] = { { (TMath::Ceil((EtaRange * 654)/0.5)) , (TMat
     Psi_3_h->Reset();
     Psi_4_h->Reset();
     Psi_5_h->Reset();
-
-  }
-
-  else if(PRINTQA == kTRUE ){ //void out the harmonics whic are 0
-    //cout<<"did you step inside the reset IF ??"<<endl;
-     //Int_t HF = 0; // set harmonics flag (0 : v1 - v5) , (1 : v2 - v5) , (2: v3 - v5) , (3: v1 - v4) , (4: v1 - v3) , (5: no vn, uniform phi) , (6: v1 - v2 , v4 - v5) , (7: v1 -v3 , v5) , (8: v1 , v3 - v5) , (9: v1 only) , (10: v2 only) , (11: v3 only) , (12: v4 only) , (13: v5 only)  // HF ---> HarmonicsFlag
-
-    if( HarmonicsFlag == 1){ // v2-v5
-      v1_pi_h->Reset();
-      v1_K_h->Reset();
-      v1_P_h->Reset();
-      v1_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 2){ //v3-v5
-      v1_pi_h->Reset();
-      v2_pi_h->Reset();
-      v1_K_h->Reset();
-      v2_K_h->Reset();
-      v1_P_h->Reset();
-      v2_P_h->Reset();
-      v1_sq_h->Reset();
-      v2_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 3){ //v1-v4
-      v5_pi_h->Reset();
-      v5_K_h->Reset();
-      v5_P_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 4){ //v1-v3
-      v4_pi_h->Reset();
-      v5_pi_h->Reset();
-      v4_K_h->Reset();
-      v5_K_h->Reset();
-      v4_P_h->Reset();
-      v5_P_h->Reset();
-      v4_sq_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 6){ //v1-v2, v4-v5
-      v3_pi_h->Reset();
-      v3_K_h->Reset();
-      v3_P_h->Reset();
-      v3_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 7){ //v1-v3, v5
-      v4_pi_h->Reset();
-      v4_K_h->Reset();
-      v4_P_h->Reset();
-      v4_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 8){ //v1, v3-v5
-      v2_pi_h->Reset();
-      v2_K_h->Reset();
-      v2_P_h->Reset();
-      v2_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 9){ //v1 only
-      v2_pi_h->Reset();
-      v3_pi_h->Reset();
-      v4_pi_h->Reset();
-      v5_pi_h->Reset();
-      v2_K_h->Reset();
-      v3_K_h->Reset();
-      v4_K_h->Reset();
-      v5_K_h->Reset();
-      v2_P_h->Reset();
-      v3_P_h->Reset();
-      v4_P_h->Reset();
-      v5_P_h->Reset();  
-      v2_sq_h->Reset();
-      v3_sq_h->Reset();
-      v4_sq_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 10){ //v2 only
-      v1_pi_h->Reset();
-      v3_pi_h->Reset();
-      v4_pi_h->Reset();
-      v5_pi_h->Reset();
-      v1_K_h->Reset();
-      v3_K_h->Reset();
-      v4_K_h->Reset();
-      v5_K_h->Reset();
-      v1_P_h->Reset();
-      v3_P_h->Reset();
-      v4_P_h->Reset();
-      v5_P_h->Reset();
-      v1_sq_h->Reset();
-      v3_sq_h->Reset();
-      v4_sq_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 11){ //v3 only
-      v1_pi_h->Reset();
-      v2_pi_h->Reset();
-      v4_pi_h->Reset();
-      v5_pi_h->Reset();
-      v1_K_h->Reset();
-      v2_K_h->Reset();
-      v4_K_h->Reset();
-      v5_K_h->Reset();
-      v1_P_h->Reset();
-      v2_P_h->Reset();
-      v4_P_h->Reset();
-      v5_P_h->Reset();
-      v1_sq_h->Reset();
-      v2_sq_h->Reset();
-      v4_sq_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 12){ //v4 only
-      v1_pi_h->Reset();
-      v2_pi_h->Reset();
-      v3_pi_h->Reset();
-      v5_pi_h->Reset();
-      v1_K_h->Reset();
-      v2_K_h->Reset();
-      v3_K_h->Reset();
-      v5_K_h->Reset();
-      v1_P_h->Reset();
-      v2_P_h->Reset();
-      v3_P_h->Reset();
-      v5_P_h->Reset();
-      v1_sq_h->Reset();
-      v2_sq_h->Reset();
-      v3_sq_h->Reset();
-      v5_sq_h->Reset();
-    }
-    else if(HarmonicsFlag == 13){ //v5 only
-      v1_pi_h->Reset();
-      v2_pi_h->Reset();
-      v3_pi_h->Reset();
-      v4_pi_h->Reset();
-      v1_K_h->Reset();
-      v2_K_h->Reset();
-      v3_K_h->Reset();
-      v4_K_h->Reset();
-      v1_P_h->Reset();
-      v2_P_h->Reset();
-      v3_P_h->Reset();
-      v4_P_h->Reset();
-      v1_sq_h->Reset();
-      v2_sq_h->Reset();
-      v3_sq_h->Reset();
-      v4_sq_h->Reset();
-    }
-
 
   }
 
