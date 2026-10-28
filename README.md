@@ -15,4 +15,4 @@ Download all files, then:
 >> root maindriver.C
 
 
-An updated version of TennGen for 200 GeV Au-Au collisions can be found <a href="https://github.com/tmengel/tenngen200/tree/main">here</a>
+An updated version of TennGen for 200 GeV Au-Au collisions which works indep. of ROOT version can be found <a href="https://github.com/tmengel/tenngen200/tree/main">here</a> 
